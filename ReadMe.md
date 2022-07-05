@@ -32,3 +32,21 @@
 
 CodeParser的工作流程与Joern相同，关于Joern的工作流程可参考[程序分析-Joern工具工作流程分析](https://blog.csdn.net/qq_44370676/article/details/125089161)
 
+
+分析中的难点：
+
+- 分析控制流时 `try-catch` 和 `for range语句` 时，目前没有找到可靠的资料
+
+- 计算use-def时，对于指针变量处理的难度，比如 `*(p+i+1) = a[i][j];` 使用了 `symbol`包括 `p, i, j, a` 和 `* a`，定义的symbol包括 `* p`，这种结果不是很准确，但是很难计算出使用和定义的指针位置，只能确定是以 `* a` 和 `* p` 开头的地址区域，这种结果会带来以下问题
+
+```cpp
+s1: memset(source, 100, 'A');
+s2: source[99] = '\0';
+s3: memcpy(data, source, 100);
+```
+
+在上述代码片段：
+
+- 计算结果中s1和s2均定义了`* source`，后者kill了前者定义的 `* symbol`，因此数据依赖图只存在s2->s3的边（imprecise的结果）
+
+- 实际上s1定义了 `* source`，s2定义了 `* (source + 99)`，数据依赖图中应该存在s1->s3, s2->s3（precise的结果）
