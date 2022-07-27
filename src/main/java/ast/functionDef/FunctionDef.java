@@ -4,7 +4,7 @@ import ast.ASTNode;
 import ast.DummyNameNode;
 import ast.expressions.Identifier;
 import ast.statements.CompoundStatement;
-import ast.walking.ASTNodeVisitor;
+import ast.ASTNodeVisitor;
 
 public class FunctionDef extends ASTNode {
     public Identifier name = new DummyNameNode();
@@ -98,6 +98,8 @@ public class FunctionDef extends ASTNode {
             setParameterList((ParameterList) node);
         else if (node instanceof ReturnType)
             setReturnType((ReturnType) node);
+        else if (node instanceof Identifier)
+            setName((Identifier) node);
         else
             super.addChild(node);
     }

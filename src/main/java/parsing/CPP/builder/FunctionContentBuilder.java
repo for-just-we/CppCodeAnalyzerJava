@@ -392,7 +392,7 @@ public class FunctionContentBuilder extends ASTNodeBuilder {
         AssignmentExpr assignmentExpr = new AssignmentExpr();
         assignmentExpr.setOperator("=");
         assignmentExpr.flag = false; // 不再自动设置operator
-        assignmentExpr.addChild(curVarNameId);
+        assignmentExpr.addChild(curVarNameId.copy());
         stack.push(assignmentExpr);
     }
 
@@ -407,7 +407,7 @@ public class FunctionContentBuilder extends ASTNodeBuilder {
         AssignmentExpr assignmentExpr = new AssignmentExpr();
         assignmentExpr.setOperator("=");
         assignmentExpr.flag = false; // 不再自动设置operator
-        assignmentExpr.addChild(curVarNameId);
+        assignmentExpr.addChild(curVarNameId.copy());
 
         InitializerList initializerList = new InitializerList();
         // assignmentExpr.addChild(initializerList);
@@ -900,6 +900,8 @@ public class FunctionContentBuilder extends ASTNodeBuilder {
         // 当前终端结点属于变量定义语句一部分并且不属于C++模板定义
         if (!pastTheTypeId && !idType.empty() && idType.peek().equals(varDecl)){
             // 普通的变量定义初始化
+            if (curType == null)
+                return;
             curType += node.getText() + " ";
             return;
         }
@@ -978,6 +980,7 @@ public class FunctionContentBuilder extends ASTNodeBuilder {
                 if (parent instanceof UnaryOp) {
                     UnaryOperator unaryOperator = new UnaryOperator();
                     unaryOperator.setOperator(node.getText());
+                    unaryOperator.setCodeStr(node.getText());
                     parent.addChild(unaryOperator);
                 }
                 break;
@@ -986,16 +989,21 @@ public class FunctionContentBuilder extends ASTNodeBuilder {
             case CPP14Parser.MinusMinus: // --expr 或 expr --
                 IncDec incDec = new IncDec();
                 incDec.setOperator(node.getText());
+                incDec.setCodeStr(node.getText());
                 if (parent instanceof UnaryOp){
                     IncDecOp incDecOp = new IncDecOp();
                     // ++x或者 --x
                     incDecOp.isPost = false;
+                    incDecOp.setOperator(incDec.getOperator());
                     incDecOp.addChild(incDec);
                     replaceTopOfStack(incDecOp);
                 }
 
-                else if (parent instanceof IncDecOp)
+                else if (parent instanceof IncDecOp){
+                    ((IncDecOp) parent).setOperator(incDec.getOperator());
                     parent.addChild(incDec);
+                }
+
                 break;
         }
     }

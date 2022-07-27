@@ -1,7 +1,7 @@
 package ast.statements;
 
 import ast.ASTNode;
-import ast.walking.ASTNodeVisitor;
+import ast.ASTNodeVisitor;
 import org.antlr.v4.runtime.ParserRuleContext;
 
 import java.util.List;

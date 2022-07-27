@@ -4,6 +4,7 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 
+import cfg.nodes.CFGExitNode;
 import misc.HashMapOfSets;
 import ddg.DataDependenceGraph.DDG;
 import ddg.DefUseCFG.DefUseCFG;
@@ -14,6 +15,12 @@ public class DDGCreator {
 	HashMapOfSets out = new HashMapOfSets(); // out集合
 	HashMapOfSets gen = new HashMapOfSets(); // gen集合
 	HashSet<Object> changedNodes;
+
+	public void clear(){
+		in.clear();
+		out.clear();
+		gen.clear();
+	}
 
 	private class Definition {
 		public Definition(Object aStatement, String aIdentifier)
@@ -61,7 +68,7 @@ public class DDGCreator {
 	{
 		initOut();
 		initGenFromOut();
-		changedNodes = new HashSet<Object>();
+		changedNodes = new HashSet<>();
 		changedNodes.addAll(cfg.getStatements());
 	}
 
@@ -175,6 +182,8 @@ public class DDGCreator {
 
 		for (Object statement : cfg.getStatements())
 		{
+			if (statement instanceof CFGExitNode)
+				continue;
 			HashSet<Object> inForBlock = in.getListForKey(statement);
 			if (inForBlock == null)
 				continue;
@@ -186,7 +195,8 @@ public class DDGCreator {
 			for (Object d : inForBlock)
 			{
 				Definition def = (Definition) d;
-
+				if (def.statement == statement)
+					continue;
 				if (usedSymbols.contains(def.identifier))
 					ddg.add(def.statement, statement, def.identifier);
 			}

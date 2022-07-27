@@ -58,7 +58,7 @@ public class CFGToUDGConverterTest {
         String structAccCode = "foo.bar = 10;";
         String structAccCode1 = "foo->bar = foo1.f1.f2;";
         String structAccCode2 = "structCharVoid->charFirst[(sizeof(structCharVoid->charFirst) / sizeof(char))-1] = '\0';";
-        String structAccCode3 = "structCharVoid->voidSecond = (void*)SRC_STR";
+        String structAccCode3 = "structCharVoid->voidSecond = (void*)SRC_STR;";
         String structAccCode4 = "memmove(structCharVoid->charFirst, SRC_STR, sizeof(*structCharVoid));";
 
         CPP14Parser parser = getParser(structAccCode4);

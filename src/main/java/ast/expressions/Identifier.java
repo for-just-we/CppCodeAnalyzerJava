@@ -1,16 +1,16 @@
 package ast.expressions;
 
-import ast.walking.ASTNodeVisitor;
-import org.antlr.v4.runtime.ParserRuleContext;
-import org.antlr.v4.runtime.tree.TerminalNode;
+import ast.ASTNodeVisitor;
 
 public class Identifier extends Expression{
-    public ParserRuleContext getParseTreeNodeContext()
-    {
-        return parseTreeNodeContext;
-    }
 
     public void accept(ASTNodeVisitor visitor) {
         visitor.visit(this);
+    }
+
+    public Identifier copy(){
+        Identifier identifier = new Identifier();
+        identifier.setCodeStr(this.codeStr);
+        return identifier;
     }
 }

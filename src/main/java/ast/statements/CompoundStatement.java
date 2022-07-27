@@ -1,7 +1,7 @@
 package ast.statements;
 
 import ast.ASTNode;
-import ast.walking.ASTNodeVisitor;
+import ast.ASTNodeVisitor;
 
 import java.util.LinkedList;
 import java.util.List;

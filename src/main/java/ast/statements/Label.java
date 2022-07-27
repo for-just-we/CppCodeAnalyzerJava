@@ -2,7 +2,7 @@ package ast.statements;
 
 import ast.ASTNode;
 import ast.expressions.Expression;
-import ast.walking.ASTNodeVisitor;
+import ast.ASTNodeVisitor;
 
 public class Label extends Statement {
     // goto语句一般为NormalLabel， Case语句为Case，Default为default

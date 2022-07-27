@@ -1,7 +1,7 @@
 package ast.expressions;
 
 import ast.ASTNode;
-import ast.walking.ASTNodeVisitor;
+import ast.ASTNodeVisitor;
 
 // 数组访问, Expression [ Expression ]
 public class ArrayIndexing extends Expression{

@@ -57,18 +57,19 @@ public class FunctionNameParamBuilder extends ASTNodeBuilder {
     public void enterParameterdeclaration(CPP14Parser.ParameterdeclarationContext ctx) {
         curParamType = "";
         Parameter parameter = new Parameter();
+        ParameterType type = new ParameterType();
+        parameter.setType(type);
         parameter.initializeFromContext(ctx);
         stack.push(parameter);
     }
 
     @Override
     public void exitParameterdeclaration(CPP14Parser.ParameterdeclarationContext ctx) {
-        ParameterType type = new ParameterType();
+        Parameter parameter = (Parameter) stack.pop();
+        ParameterType type = parameter.getType();
         type.setBaseType(curParamType);
         type.setCompleteType(curParamCompleteType);
 
-        Parameter parameter = (Parameter) stack.pop();
-        parameter.setType(type);
         ParameterList parameterList = (ParameterList) stack.peek();
         parameterList.addParameter(parameter);
         curParamType = null;

@@ -36,19 +36,4 @@ public class NestingReconstructor {
             expression = (Expression) expression.getChild(0);
         return expression;
     }
-
-    protected void consolidate()
-    {
-
-        ASTNode stmt = stack.pop();
-        ASTNode topOfStack = null;
-
-        if (stack.size() > 0)
-            topOfStack = stack.peek();
-
-        if (topOfStack instanceof CompoundStatement) {
-            CompoundStatement compound = (CompoundStatement) topOfStack;
-            compound.addStatement(stmt);
-        }
-    }
 }

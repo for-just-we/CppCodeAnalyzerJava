@@ -1,6 +1,6 @@
 package ast.expressions;
 
-import ast.walking.ASTNodeVisitor;
+import ast.ASTNodeVisitor;
 
 public class UnaryOperator extends Expression{
     public void accept(ASTNodeVisitor visitor)

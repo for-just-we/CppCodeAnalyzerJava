@@ -2,7 +2,7 @@ package ast;
 
 import org.antlr.v4.runtime.ParserRuleContext;
 
-public class CodeLocation {
+public class CodeLocation implements Comparable{
     final private int NOT_SET = -1;
 
     public int startLine = NOT_SET;
@@ -31,5 +31,19 @@ public class CodeLocation {
     @Override
     public String toString() {
         return String.format("%d:%d:%d:%d", startLine, startPos, startIndex, stopIndex);
+    }
+
+    @Override
+    public int compareTo(Object o) {
+        CodeLocation loc = (CodeLocation) o;
+        if (this.startLine < loc.startLine)
+            return -1;
+        else if (this.startLine > loc.startLine)
+            return 1;
+        else if (this.startPos < loc.startPos)
+            return -1;
+        else if (this.startPos > loc.startPos)
+            return 1;
+        return 0;
     }
 }

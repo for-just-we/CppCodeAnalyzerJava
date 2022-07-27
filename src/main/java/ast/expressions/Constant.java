@@ -1,6 +1,6 @@
 package ast.expressions;
 
-import ast.walking.ASTNodeVisitor;
+import ast.ASTNodeVisitor;
 
 public class Constant extends Expression{
     private Identifier identifier = null;

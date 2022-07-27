@@ -1,5 +1,6 @@
 package cdg;
 
+import cfg.nodes.CFGEntryNode;
 import cfg.nodes.CFGNode;
 import graphutils.AbstractGraph;
 
@@ -26,6 +27,8 @@ public class CDG extends AbstractGraph<CFGNode, CDGEdge> {
             if (frontier != null) {
                 cdg.addVertex(vertex);
                 for (CFGNode f : frontier) {
+                    if (f == vertex || f instanceof CFGEntryNode)
+                        continue;
                     cdg.addVertex(f);
                     cdg.addEdge(new CDGEdge(f, vertex));
                 }

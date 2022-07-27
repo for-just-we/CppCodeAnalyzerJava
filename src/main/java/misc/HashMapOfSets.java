@@ -13,6 +13,9 @@ import java.util.Set;
 
 public class HashMapOfSets
 {
+	public void clear(){
+		hashMap.clear();
+	}
 
 	public HashMap<Object, HashSet<Object>> hashMap = new HashMap<Object, HashSet<Object>>();
 

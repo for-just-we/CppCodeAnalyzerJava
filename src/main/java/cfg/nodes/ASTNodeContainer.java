@@ -1,8 +1,9 @@
 package cfg.nodes;
 
 import ast.ASTNode;
+import ast.CodeLocation;
 
-public class ASTNodeContainer extends AbstractCFGNode{
+public class ASTNodeContainer extends AbstractCFGNode implements Comparable{
     private ASTNode astNode;
 
     public ASTNodeContainer(ASTNode node) {
@@ -37,5 +38,11 @@ public class ASTNodeContainer extends AbstractCFGNode{
     public String toString()
     {
         return "[" + astNode.getEscapedCodeStr() + "]";
+    }
+
+    @Override
+    public int compareTo(Object o) {
+        ASTNodeContainer node = (ASTNodeContainer) o;
+        return this.getASTNode().getLocation().compareTo(node.getASTNode().getLocation());
     }
 }

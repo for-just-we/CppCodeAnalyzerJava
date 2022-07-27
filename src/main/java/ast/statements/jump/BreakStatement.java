@@ -1,7 +1,6 @@
 package ast.statements.jump;
 
-import ast.statements.jump.JumpStatement;
-import ast.walking.ASTNodeVisitor;
+import ast.ASTNodeVisitor;
 
 public class BreakStatement extends JumpStatement {
     public void accept(ASTNodeVisitor visitor)

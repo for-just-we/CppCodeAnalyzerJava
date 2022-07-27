@@ -1,7 +1,7 @@
 package ast.statements.blockstarters;
 
 import ast.ASTNode;
-import ast.walking.ASTNodeVisitor;
+import ast.ASTNodeVisitor;
 
 import java.util.Iterator;
 import java.util.LinkedList;

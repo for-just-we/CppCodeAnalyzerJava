@@ -3,7 +3,7 @@ package ast.expressions.postfixExpressions;
 import ast.ASTNode;
 import ast.expressions.expressionHolders.ArgumentList;
 import ast.expressions.Identifier;
-import ast.walking.ASTNodeVisitor;
+import ast.ASTNodeVisitor;
 
 public class CallExpression extends CallExpressionBase {
     @Override

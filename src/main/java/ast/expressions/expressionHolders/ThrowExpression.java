@@ -2,7 +2,7 @@ package ast.expressions.expressionHolders;
 
 import ast.ASTNode;
 import ast.expressions.Expression;
-import ast.walking.ASTNodeVisitor;
+import ast.ASTNodeVisitor;
 
 // throw expr
 public class ThrowExpression extends ExpressionHolder{

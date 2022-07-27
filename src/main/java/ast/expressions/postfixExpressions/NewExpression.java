@@ -1,8 +1,7 @@
 package ast.expressions.postfixExpressions;
 
 import ast.expressions.Identifier;
-import ast.expressions.postfixExpressions.CallExpressionBase;
-import ast.walking.ASTNodeVisitor;
+import ast.ASTNodeVisitor;
 
 public class NewExpression extends CallExpressionBase {
     private Identifier targetClass;

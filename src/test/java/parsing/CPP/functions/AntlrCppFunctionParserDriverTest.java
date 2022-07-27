@@ -123,7 +123,7 @@ public class AntlrCppFunctionParserDriverTest {
         String staticCode = "unsigned int test::m_value1 = 0, ::a = 1, *bb(4);";
         String staticCode1 = "singleton *singleton::m_instance= NULL;";
 
-        CPP14Parser parser = getParser(codeType);
+        CPP14Parser parser = getParser(code);
         ParseTree tree = parser.simpledeclaration();
         ParseTreeWalker walker = new ParseTreeWalker();
         FunctionContentBuilder builder = new FunctionContentBuilder();

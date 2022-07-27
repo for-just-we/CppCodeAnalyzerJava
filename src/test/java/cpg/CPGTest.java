@@ -1,10 +1,14 @@
-package ddg;
+package cpg;
 
 import antlr.Cpp.CPP14Lexer;
 import antlr.Cpp.CPP14Parser;
 import ast.functionDef.FunctionDef;
+import cdg.CDG;
+import cdg.CDGCreator;
 import cfg.ASTToCFGConverter;
 import cfg.CFG;
+import ddg.CFGAndUDGToDefUseCFG;
+import ddg.DDGCreator;
 import ddg.DataDependenceGraph.DDG;
 import ddg.DefUseCFG.DefUseCFG;
 import org.antlr.v4.runtime.ANTLRInputStream;
@@ -18,7 +22,7 @@ import udg.useDefAnalysis.CalleeInfos;
 import udg.useDefGraph.CFGToUDGConverter;
 import udg.useDefGraph.UseDefGraph;
 
-public class CFGAndUDGToDefUseCFGTest {
+public class CPGTest {
     ASTDefUseAnalyzer astAnalyzer = new ASTDefUseAnalyzer();
     CalleeInfos calleeInfos = new CalleeInfos();
 
@@ -95,6 +99,15 @@ public class CFGAndUDGToDefUseCFGTest {
         // Data Dependence Graph
         DDGCreator ddgCreator = new DDGCreator();
         DDG ddg = ddgCreator.createForDefUseCFG(defUseCFG);
+
+        // Control Dependence Graph
+        CDGCreator cdgCreator = new CDGCreator();
+        CDG cdg = cdgCreator.create(compCFG);
+
+        CPG cpg = new CPG();
+        cpg.initCFGEdges(compCFG);
+        cpg.initCDGEdges(cdg);
+        cpg.initDDGEdges(ddg);
 
         long endTime = System.currentTimeMillis();
         System.out.println(endTime - startTime);

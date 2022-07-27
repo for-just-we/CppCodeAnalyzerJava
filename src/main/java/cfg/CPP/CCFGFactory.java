@@ -23,7 +23,7 @@ import cfg.nodes.CFGNode;
 import cfg.nodes.InfiniteForNode;
 
 public class CCFGFactory extends CFGFactory{
-    private static StructuredFlowVisitor structuredFlowVisitior = new StructuredFlowVisitor();
+    private static final StructuredFlowVisitor structuredFlowVisitior = new StructuredFlowVisitor();
 
     @Override
     public CFG newInstance(FunctionDef functionDefinition)
@@ -31,6 +31,7 @@ public class CCFGFactory extends CFGFactory{
         try {
             // 函数返回CFG
             CCFG function = newInstance();
+            function.setName(functionDefinition.name.getEscapedCodeStr());
             // 求解parameterBlock对应的cfg
             CCFG parameterBlock = convert(functionDefinition.getParameterList());
             // 求解functionBody对应的cfg

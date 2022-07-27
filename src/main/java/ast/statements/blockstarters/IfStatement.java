@@ -1,7 +1,7 @@
 package ast.statements.blockstarters;
 
 import ast.ASTNode;
-import ast.walking.ASTNodeVisitor;
+import ast.ASTNodeVisitor;
 
 public class IfStatement extends BlockStarter {
     private ElseStatement elseNode = null;

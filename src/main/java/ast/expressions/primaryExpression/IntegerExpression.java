@@ -1,6 +1,6 @@
 package ast.expressions.primaryExpression;
 
-import ast.walking.ASTNodeVisitor;
+import ast.ASTNodeVisitor;
 
 public class IntegerExpression extends PrimaryExpression{
     public Integer getValue() {

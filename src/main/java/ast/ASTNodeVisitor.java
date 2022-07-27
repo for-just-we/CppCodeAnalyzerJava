@@ -1,4 +1,4 @@
-package ast.walking;
+package ast;
 
 import ast.ASTNode;
 import ast.declaration.ClassDefStatement;
@@ -25,8 +25,6 @@ import ast.statements.jump.ReturnStatement;
 import java.util.Stack;
 
 public class ASTNodeVisitor {
-    protected Stack<Long> contextStack;
-
     public void defaultHandler(ASTNode item) {
         // by default, redirect to visit(ASTNode item)
         visit((ASTNode) item);
@@ -108,59 +106,63 @@ public class ASTNodeVisitor {
         defaultHandler(expression);
     }
 
-    public void visit(ReturnStatement expression)
+    public void visit(ReturnStatement statementItem)
     {
-        defaultHandler(expression);
+        defaultHandler(statementItem);
     }
 
-    public void visit(GotoStatement expression)
+    public void visit(GotoStatement statementItem)
     {
-        defaultHandler(expression);
+        defaultHandler(statementItem);
     }
 
-    public void visit(ContinueStatement expression)
+    public void visit(ContinueStatement statementItem)
     {
-        defaultHandler(expression);
+        defaultHandler(statementItem);
     }
 
-    public void visit(BreakStatement expression)
+    public void visit(BreakStatement statementItem)
     {
-        defaultHandler(expression);
+        defaultHandler(statementItem);
     }
 
-    public void visit(CompoundStatement expression)
+    public void visit(CompoundStatement statementItem)
     {
-        defaultHandler(expression);
+        defaultHandler(statementItem);
     }
 
-    public void visit(IfStatement expression)
+    public void visit(IfStatement statementItem)
     {
-        defaultHandler(expression);
+        defaultHandler(statementItem);
     }
 
-    public void visit(ForStatement expression)
+    public void visit(ForStatement statementItem)
     {
-        defaultHandler(expression);
+        defaultHandler(statementItem);
     }
 
-    public void visit(WhileStatement expression)
+    public void visit(WhileStatement statementItem)
     {
-        defaultHandler(expression);
+        defaultHandler(statementItem);
     }
 
-    public void visit(DoStatement expression)
+    public void visit(DoStatement statementItem)
     {
-        defaultHandler(expression);
+        defaultHandler(statementItem);
     }
 
-    public void visit(Label expression)
+    public void visit(ForRangeStatement statementItem) { defaultHandler(statementItem); }
+
+    public void visit(TryStatement statementItem) { defaultHandler(statementItem); }
+
+    public void visit(Label statementItem)
     {
-        defaultHandler(expression);
+        defaultHandler(statementItem);
     }
 
-    public void visit(SwitchStatement expression)
+    public void visit(SwitchStatement statementItem)
     {
-        defaultHandler(expression);
+        defaultHandler(statementItem);
     }
 
     public void visit(ASTNode item) {

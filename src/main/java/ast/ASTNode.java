@@ -1,9 +1,7 @@
 package ast;
 
-import ast.walking.ASTNodeVisitor;
 import org.antlr.v4.runtime.ParserRuleContext;
 import ast.expressions.Expression;
-import org.antlr.v4.runtime.tree.ParseTree;
 import parsing.ParseTreeUtils;
 
 import java.util.LinkedList;
@@ -22,7 +20,7 @@ public class ASTNode {
     public void addChild(ASTNode node)
     {
         if (children == null)
-            children = new LinkedList<ASTNode>();
+            children = new LinkedList<>();
         node.setChildNumber(children.size());
         children.add(node);
     }
@@ -66,6 +64,8 @@ public class ASTNode {
 
     public void initializeFromContext(ParserRuleContext ctx) {
         parseTreeNodeContext = ctx;
+        setLocation(ctx);
+        setCodeStr(escapeCodeStr(ParseTreeUtils.childTokenString(parseTreeNodeContext)));
     }
 
     public void setLocation(ParserRuleContext ctx)
@@ -143,6 +143,6 @@ public class ASTNode {
         // 该ASTNode对应子类是否继承自Expression，也就是该对象是否为Expression
         if (Expression.class.isAssignableFrom(this.getClass()))
             return ((Expression) this).getOperator();
-        return null;
+        return "";
     }
 }

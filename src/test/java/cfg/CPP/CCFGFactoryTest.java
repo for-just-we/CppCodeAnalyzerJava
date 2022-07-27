@@ -167,7 +167,7 @@ public class CCFGFactoryTest {
 
     @Test
     public void testFunctionDef(){
-        String code = "static void goodG2B2()\n" +
+        String code = "static void goodG2B2(int a = 1)\n" +
                 "{\n" +
                 "    char * data;\n" +
                 "    data = NULL;\n" +

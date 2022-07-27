@@ -1,7 +1,7 @@
 package ast.expressions.primaryExpression;
 
 import ast.expressions.Expression;
-import ast.walking.ASTNodeVisitor;
+import ast.ASTNodeVisitor;
 
 public class PrimaryExpression extends Expression {
     @Override

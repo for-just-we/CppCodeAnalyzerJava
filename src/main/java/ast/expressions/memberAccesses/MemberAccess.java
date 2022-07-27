@@ -1,7 +1,7 @@
 package ast.expressions.memberAccesses;
 
 import ast.expressions.postfixExpressions.PostfixExpression;
-import ast.walking.ASTNodeVisitor;
+import ast.ASTNodeVisitor;
 
 // 成员变量访问，对应 a.f1
 public class MemberAccess extends PostfixExpression {

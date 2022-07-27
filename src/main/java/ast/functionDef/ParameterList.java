@@ -2,7 +2,7 @@ package ast.functionDef;
 
 import ast.ASTNode;
 import ast.expressions.Identifier;
-import ast.walking.ASTNodeVisitor;
+import ast.ASTNodeVisitor;
 
 import java.util.Iterator;
 import java.util.LinkedList;

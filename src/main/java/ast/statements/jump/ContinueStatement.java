@@ -1,7 +1,7 @@
 package ast.statements.jump;
 
 import ast.statements.Statement;
-import ast.walking.ASTNodeVisitor;
+import ast.ASTNodeVisitor;
 
 public class ContinueStatement extends Statement {
     public void accept(ASTNodeVisitor visitor)

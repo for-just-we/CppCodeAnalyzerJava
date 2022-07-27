@@ -10,7 +10,7 @@ import ast.statements.CompoundStatement;
 import ast.statements.Statement;
 import org.antlr.v4.runtime.tree.ParseTreeWalker;
 
-public class FunctionDefBuilder extends ASTNodeBuilder {
+public class  FunctionDefBuilder extends ASTNodeBuilder {
     public FunctionDef functionDef;
     private ParseTreeWalker walker = new ParseTreeWalker();
 

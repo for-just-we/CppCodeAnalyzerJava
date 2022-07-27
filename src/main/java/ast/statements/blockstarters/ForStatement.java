@@ -5,7 +5,7 @@ import ast.expressions.Expression;
 import ast.expressions.expressionHolders.Condition;
 import ast.declaration.ForInit;
 import ast.statements.Statement;
-import ast.walking.ASTNodeVisitor;
+import ast.ASTNodeVisitor;
 
 public class ForStatement extends BlockStarter {
     private ASTNode forInitStatement = null;

@@ -1,6 +1,6 @@
 package ast.expressions.expressionHolders;
 
-import ast.walking.ASTNodeVisitor;
+import ast.ASTNodeVisitor;
 
 public class Condition extends ExpressionHolder {
     public void accept(ASTNodeVisitor visitor)

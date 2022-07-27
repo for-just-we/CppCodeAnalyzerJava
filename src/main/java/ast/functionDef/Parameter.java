@@ -3,7 +3,7 @@ package ast.functionDef;
 import ast.ASTNode;
 import ast.expressions.Identifier;
 import ast.expressions.primaryExpression.PrimaryExpression;
-import ast.walking.ASTNodeVisitor;
+import ast.ASTNodeVisitor;
 
 public class Parameter extends ASTNode {
     // 函数形参变量类型

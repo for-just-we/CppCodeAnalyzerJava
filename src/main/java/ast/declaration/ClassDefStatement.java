@@ -1,12 +1,10 @@
 package ast.declaration;
 
 import ast.ASTNode;
-import ast.DummyNameNode;
 import ast.expressions.Identifier;
 import ast.functionDef.FunctionDef;
-import ast.statements.CompoundStatement;
 import ast.statements.Statement;
-import ast.walking.ASTNodeVisitor;
+import ast.ASTNodeVisitor;
 
 import java.util.ArrayList;
 import java.util.List;

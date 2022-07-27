@@ -40,4 +40,13 @@ public class ClassStaticIdentifier extends Identifier{
     public String getEscapedCodeStr() {
         return className.getEscapedCodeStr() + "::" + varName.getEscapedCodeStr();
     }
+
+    public ClassStaticIdentifier copy(){
+        ClassStaticIdentifier staticIdentifier = new ClassStaticIdentifier();
+        Identifier className = this.className.copy();
+        Identifier varName = this.varName.copy();
+        staticIdentifier.addChild(className);
+        staticIdentifier.addChild(varName);
+        return staticIdentifier;
+    }
 }

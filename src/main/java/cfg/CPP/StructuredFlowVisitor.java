@@ -9,7 +9,7 @@ import ast.statements.jump.BreakStatement;
 import ast.statements.jump.ContinueStatement;
 import ast.statements.jump.GotoStatement;
 import ast.statements.jump.ReturnStatement;
-import ast.walking.ASTNodeVisitor;
+import ast.ASTNodeVisitor;
 import cfg.CFG;
 import cfg.nodes.ASTNodeContainer;
 import cfg.nodes.CFGNode;
@@ -65,6 +65,8 @@ public class StructuredFlowVisitor extends ASTNodeVisitor {
         returnCFG = CCFGFactory.newInstance(node);
     }
 
+    public void visit(ForRangeStatement node) { returnCFG = CCFGFactory.newInstance(node); }
+
     public void visit(WhileStatement node)
     {
         returnCFG = CCFGFactory.newInstance(node);
@@ -79,6 +81,8 @@ public class StructuredFlowVisitor extends ASTNodeVisitor {
     {
         returnCFG = CCFGFactory.newInstance(node);
     }
+
+    public void visit(TryStatement node) { returnCFG = CCFGFactory.newInstance(node); }
 
     public void visit(Label node)
     {

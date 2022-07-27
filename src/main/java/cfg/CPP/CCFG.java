@@ -16,11 +16,11 @@ public class CCFG extends CFG {
 
     public CCFG() {
         super();
-        setBreakStatements(new LinkedList<CFGNode>());
-        setContinueStatements(new LinkedList<CFGNode>());
-        setReturnStatements(new LinkedList<CFGNode>());
-        setGotoStatements(new HashMap<CFGNode, String>());
-        setLabels(new HashMap<String, CFGNode>());
+        setBreakStatements(new LinkedList<>());
+        setContinueStatements(new LinkedList<>());
+        setReturnStatements(new LinkedList<>());
+        setGotoStatements(new HashMap<>());
+        setLabels(new HashMap<>());
     }
 
     public List<CFGNode> getBreakStatements()

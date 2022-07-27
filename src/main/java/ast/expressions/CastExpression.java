@@ -1,7 +1,7 @@
 package ast.expressions;
 
 import ast.ASTNode;
-import ast.walking.ASTNodeVisitor;
+import ast.ASTNodeVisitor;
 
 // 类型转换，最多2个子结点
 public class CastExpression extends Expression {

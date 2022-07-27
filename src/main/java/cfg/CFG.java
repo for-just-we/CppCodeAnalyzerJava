@@ -15,6 +15,15 @@ public class CFG extends AbstractTwoWayGraph<CFGNode, CFGEdge> {
     private CFGExitNode exit; // function退出点
     private CFGErrorNode error;
     private List<CFGNode> parameters; // 函数参数
+    private String name; //函数名
+
+    public String getName(){
+        return name;
+    }
+
+    public void setName(String name){
+        this.name = name;
+    }
 
     public CFG() {
         entry = new CFGEntryNode();

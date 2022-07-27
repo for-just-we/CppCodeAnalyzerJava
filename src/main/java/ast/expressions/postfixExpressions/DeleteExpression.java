@@ -2,7 +2,7 @@ package ast.expressions.postfixExpressions;
 
 import ast.ASTNode;
 import ast.expressions.Expression;
-import ast.walking.ASTNodeVisitor;
+import ast.ASTNodeVisitor;
 
 public class DeleteExpression extends CallExpressionBase {
     // delete掉的可能变量名，数组引用或者指针引用
