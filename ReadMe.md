@@ -50,3 +50,6 @@ s3: memcpy(data, source, 100);
 - 计算结果中s1和s2均定义了`* source`，后者kill了前者定义的 `* symbol`，因此数据依赖图只存在s2->s3的边（imprecise的结果）
 
 - 实际上s1定义了 `* source`，s2定义了 `* (source + 99)`，数据依赖图中应该存在s1->s3, s2->s3（precise的结果）
+
+
+Python版本为[CppCodeAnalyzer](https://github.com/for-just-we/CppCodeAnalyzer)
