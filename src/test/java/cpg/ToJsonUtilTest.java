@@ -1,15 +1,18 @@
 package cpg;
 
-import cdg.CDGCreator;
-import cfg.ASTToCFGConverter;
+import mainTool.cdg.CDGCreator;
+import mainTool.cfg.ASTToCFGConverter;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.serializer.SerializerFeature;
-import ddg.CFGAndUDGToDefUseCFG;
-import ddg.DDGCreator;
+import mainTool.cpg.CPG;
+import mainTool.cpg.FileParseUtil;
+import mainTool.cpg.ToJsonUtil;
+import mainTool.ddg.CFGAndUDGToDefUseCFG;
+import mainTool.ddg.DDGCreator;
 import org.junit.Test;
-import udg.useDefAnalysis.ASTDefUseAnalyzer;
-import udg.useDefAnalysis.CalleeInfos;
-import udg.useDefGraph.CFGToUDGConverter;
+import mainTool.udg.useDefAnalysis.ASTDefUseAnalyzer;
+import mainTool.udg.useDefAnalysis.CalleeInfos;
+import mainTool.udg.useDefGraph.CFGToUDGConverter;
 
 import java.io.IOException;
 import java.util.List;

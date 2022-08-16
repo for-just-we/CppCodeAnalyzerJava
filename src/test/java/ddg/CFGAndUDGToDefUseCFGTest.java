@@ -1,22 +1,24 @@
 package ddg;
 
-import antlr.Cpp.CPP14Lexer;
-import antlr.Cpp.CPP14Parser;
-import ast.functionDef.FunctionDef;
-import cfg.ASTToCFGConverter;
-import cfg.CFG;
-import ddg.DataDependenceGraph.DDG;
-import ddg.DefUseCFG.DefUseCFG;
+import mainTool.antlr.Cpp.CPP14Lexer;
+import mainTool.antlr.Cpp.CPP14Parser;
+import mainTool.ast.functionDef.FunctionDef;
+import mainTool.cfg.ASTToCFGConverter;
+import mainTool.cfg.CFG;
+import mainTool.ddg.CFGAndUDGToDefUseCFG;
+import mainTool.ddg.DDGCreator;
+import mainTool.ddg.DataDependenceGraph.DDG;
+import mainTool.ddg.DefUseCFG.DefUseCFG;
 import org.antlr.v4.runtime.ANTLRInputStream;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.tree.ParseTree;
 import org.antlr.v4.runtime.tree.ParseTreeWalker;
 import org.junit.Test;
-import parsing.CPP.builder.FunctionDefBuilder;
-import udg.useDefAnalysis.ASTDefUseAnalyzer;
-import udg.useDefAnalysis.CalleeInfos;
-import udg.useDefGraph.CFGToUDGConverter;
-import udg.useDefGraph.UseDefGraph;
+import mainTool.parsing.CPP.builder.FunctionDefBuilder;
+import mainTool.udg.useDefAnalysis.ASTDefUseAnalyzer;
+import mainTool.udg.useDefAnalysis.CalleeInfos;
+import mainTool.udg.useDefGraph.CFGToUDGConverter;
+import mainTool.udg.useDefGraph.UseDefGraph;
 
 public class CFGAndUDGToDefUseCFGTest {
     ASTDefUseAnalyzer astAnalyzer = new ASTDefUseAnalyzer();
