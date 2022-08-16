@@ -1,21 +1,21 @@
 package cfg.CPP;
 
-import antlr.Cpp.CPP14Lexer;
-import antlr.Cpp.CPP14Parser;
-import ast.ASTNode;
-import ast.functionDef.FunctionDef;
-import ast.statements.CompoundStatement;
-import ast.statements.Statement;
-import ast.statements.blockstarters.*;
-import cfg.ASTToCFGConverter;
-import cfg.CFG;
+import mainTool.antlr.Cpp.CPP14Lexer;
+import mainTool.antlr.Cpp.CPP14Parser;
+import mainTool.ast.functionDef.FunctionDef;
+import mainTool.ast.statements.CompoundStatement;
+import mainTool.ast.statements.Statement;
+import mainTool.ast.statements.blockstarters.*;
+import mainTool.cfg.ASTToCFGConverter;
+import mainTool.cfg.CFG;
+import mainTool.cfg.CPP.CCFGFactory;
 import org.antlr.v4.runtime.ANTLRInputStream;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.tree.ParseTree;
 import org.antlr.v4.runtime.tree.ParseTreeWalker;
 import org.junit.Test;
-import parsing.CPP.builder.FunctionContentBuilder;
-import parsing.CPP.builder.FunctionDefBuilder;
+import mainTool.parsing.CPP.builder.FunctionContentBuilder;
+import mainTool.parsing.CPP.builder.FunctionDefBuilder;
 
 public class CCFGFactoryTest {
     @Test

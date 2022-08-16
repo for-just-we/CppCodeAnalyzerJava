@@ -1,17 +1,17 @@
 package parsing.CPP.functions;
 
 
-import antlr.Cpp.CPP14Lexer;
-import antlr.Cpp.CPP14Parser;
-import ast.expressions.binaryExpressions.AssignmentExpr;
-import ast.statements.CompoundStatement;
-import ast.statements.Statement;
+import mainTool.antlr.Cpp.CPP14Lexer;
+import mainTool.antlr.Cpp.CPP14Parser;
+import mainTool.ast.expressions.binaryExpressions.AssignmentExpr;
+import mainTool.ast.statements.CompoundStatement;
+import mainTool.ast.statements.Statement;
 import org.antlr.v4.runtime.ANTLRInputStream;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.tree.ParseTree;
 import org.antlr.v4.runtime.tree.ParseTreeWalker;
 import org.junit.Test;
-import parsing.CPP.builder.FunctionContentBuilder;
+import mainTool.parsing.CPP.builder.FunctionContentBuilder;
 
 public class AntlrCppFunctionParserDriverTest {
     @Test
