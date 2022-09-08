@@ -53,3 +53,43 @@ s3: memcpy(data, source, 100);
 
 
 Python版本为[CppCodeAnalyzer](https://github.com/for-just-we/CppCodeAnalyzer)
+
+使用的时候计算数据依赖时会用到calleeInfos.json，使用如下代码加载：
+
+```java
+String calleeInfoFile = "src/main/resources/calleeInfos.json";
+File file = new File(calleeInfoFile);
+String file1 = FileUtils.readFileToString(file);//前面两行是读取文件JSONObject jsonobject = JSON.parseObject(file1);
+CalleeInfos calleeInfos = new CalleeInfos();
+
+JSONObject defInfos = jsonobject.getJSONObject("ArgDefs");
+for (Map.Entry<String, Object> entry: defInfos.entrySet()){
+    String funcName = entry.getKey();
+    JSONArray idxs = (JSONArray) entry.getValue();
+    idxs.forEach(i -> calleeInfos.addArgDef(funcName, (Integer) i));
+}
+
+JSONObject useInfos = jsonobject.getJSONObject("ArgUses");
+for (Map.Entry<String, Object> entry: useInfos.entrySet()){
+    String funcName = entry.getKey();
+    JSONArray idxs = (JSONArray) entry.getValue();
+    idxs.forEach(i -> calleeInfos.addArgUse(funcName, (Integer) i));
+}
+
+JSONObject defStart = jsonobject.getJSONObject("ArgDefStartIds");
+for (Map.Entry<String, Object> entry: defStart.entrySet()){
+    String funcName = entry.getKey();
+    Integer idx = (Integer) entry.getValue();
+    calleeInfos.addArgDefStartIds(funcName, idx);
+}
+
+astAnalyzer.setCalleeInfos(calleeInfos);
+converter.setAstAnalyzer(astAnalyzer);
+
+CFGAndUDGToDefUseCFG defUseConverter = new CFGAndUDGToDefUseCFG();
+DDGCreator ddgCreator = new DDGCreator();
+CDGCreator cdgCreator = new CDGCreator();
+CalleeInfos calleeInfos = new CalleeInfos();
+```
+
+`astAnalyzer.setCalleeInfos(calleeInfos);` 和 `converter.setAstAnalyzer(astAnalyzer);` 非常重要，不然加载不了calleeInfo
