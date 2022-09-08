@@ -33,7 +33,10 @@ public class FunctionContentBuilder extends ASTNodeBuilder {
     private String curType = null; // IdentifierDeclStatement, ForRangeInit, newTypeId
     private String curCompleteType = null;
     private Identifier curVarNameId = null; // 标识当前变量名
-
+    
+    private int countArrayDecl = 0;
+    private int arrayIdentifierCount = 0;
+    
     private final String varDecl = "VarDecl";
     private final String declarator = "Declarator";
 
@@ -367,6 +370,14 @@ public class FunctionContentBuilder extends ASTNodeBuilder {
     @Override
     public void enterArrayDecl(CPP14Parser.ArrayDeclContext ctx) {
         curCompleteType += " *";
+        countArrayDecl++;
+    }
+    
+    @Override
+    public void exitArrayDecl(CPP14Parser.ArrayDeclContext ctx) {
+        countArrayDecl--;
+        if (countArrayDecl == 0)
+            arrayIdentifierCount = 0;
     }
 
     // 以下代码处理Expression
@@ -923,6 +934,12 @@ public class FunctionContentBuilder extends ASTNodeBuilder {
                 Identifier expr = new Identifier();
                 expr.setCodeStr(node.getText());
                 parent.addChild(expr);
+                if (countArrayDecl > 0)
+                    arrayIdentifierCount++;
+
+                if (countArrayDecl > 0 && arrayIdentifierCount > 1)
+                    break;
+                
                 // 如果当前Identifier在变量定义语句中
                 if (!idType.empty() && idType.peek().equals(declarator))
                     curVarNameId = expr;
