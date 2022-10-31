@@ -1,19 +1,19 @@
 package cdg;
 
 
-import mainTool.antlr.Cpp.CPP14Lexer;
-import mainTool.antlr.Cpp.CPP14Parser;
-import mainTool.ast.functionDef.FunctionDef;
-import mainTool.cdg.CDG;
-import mainTool.cdg.CDGCreator;
-import mainTool.cfg.ASTToCFGConverter;
-import mainTool.cfg.CFG;
+import io.analyzer.mainTool.antlr.Cpp.CPP14Lexer;
+import io.analyzer.mainTool.antlr.Cpp.CPP14Parser;
+import io.analyzer.mainTool.ast.functionDef.FunctionDef;
+import io.analyzer.mainTool.cdg.CDG;
+import io.analyzer.mainTool.cdg.CDGCreator;
+import io.analyzer.mainTool.cfg.ASTToCFGConverter;
+import io.analyzer.mainTool.cfg.CFG;
 import org.antlr.v4.runtime.ANTLRInputStream;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.tree.ParseTree;
 import org.antlr.v4.runtime.tree.ParseTreeWalker;
 import org.junit.Test;
-import mainTool.parsing.CPP.builder.FunctionDefBuilder;
+import io.analyzer.mainTool.parsing.CPP.builder.FunctionDefBuilder;
 
 public class CDGCreatorTest {
 

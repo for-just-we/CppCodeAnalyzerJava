@@ -1,15 +1,15 @@
 package cpg;
 
-import mainTool.cdg.CDGCreator;
-import mainTool.cfg.ASTToCFGConverter;
-import mainTool.cpg.CPG;
-import mainTool.cpg.FileParseUtil;
-import mainTool.ddg.CFGAndUDGToDefUseCFG;
-import mainTool.ddg.DDGCreator;
+import io.analyzer.mainTool.cdg.CDGCreator;
+import io.analyzer.mainTool.cfg.ASTToCFGConverter;
+import io.analyzer.mainTool.cpg.CPG;
+import io.analyzer.mainTool.cpg.FileParseUtil;
+import io.analyzer.mainTool.ddg.CFGAndUDGToDefUseCFG;
+import io.analyzer.mainTool.ddg.DDGCreator;
 import org.junit.Test;
-import mainTool.udg.useDefAnalysis.ASTDefUseAnalyzer;
-import mainTool.udg.useDefAnalysis.CalleeInfos;
-import mainTool.udg.useDefGraph.CFGToUDGConverter;
+import io.analyzer.mainTool.udg.useDefAnalysis.ASTDefUseAnalyzer;
+import io.analyzer.mainTool.udg.useDefAnalysis.CalleeInfos;
+import io.analyzer.mainTool.udg.useDefGraph.CFGToUDGConverter;
 
 import java.io.IOException;
 import java.util.List;

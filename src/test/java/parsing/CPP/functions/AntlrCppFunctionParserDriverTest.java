@@ -1,25 +1,54 @@
 package parsing.CPP.functions;
 
 
-import mainTool.antlr.Cpp.CPP14Lexer;
-import mainTool.antlr.Cpp.CPP14Parser;
-import mainTool.ast.expressions.binaryExpressions.AssignmentExpr;
-import mainTool.ast.statements.CompoundStatement;
-import mainTool.ast.statements.Statement;
+import io.analyzer.mainTool.antlr.Cpp.CPP14Lexer;
+import io.analyzer.mainTool.antlr.Cpp.CPP14Parser;
+import io.analyzer.mainTool.ast.expressions.binaryExpressions.AssignmentExpr;
+import io.analyzer.mainTool.ast.statements.CompoundStatement;
+import io.analyzer.mainTool.ast.statements.Statement;
 import org.antlr.v4.runtime.ANTLRInputStream;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.tree.ParseTree;
 import org.antlr.v4.runtime.tree.ParseTreeWalker;
 import org.junit.Test;
-import mainTool.parsing.CPP.builder.FunctionContentBuilder;
+import io.analyzer.mainTool.parsing.CPP.builder.FunctionContentBuilder;
 
 public class AntlrCppFunctionParserDriverTest {
     @Test
     public void test(){
+        String code1 = "static void renameTestSchema(\n" +
+                "  Parse *pParse,                  /* Parse context */\n" +
+                "  const char *zDb,                /* Name of db to verify schema of */\n" +
+                "  int bTemp,                      /* True if this is the temp db */\n" +
+                "  const char *zWhen,              /* \"when\" part of error message */\n" +
+                "  int bNoDQS                      /* Do not allow DQS in the schema */\n" +
+                "){\n" +
+                "  pParse->colNamesSet = 1;\n" +
+                "  sqlite3NestedParse(pParse, \n" +
+                "      \"SELECT 1 \"\n" +
+                "      \"FROM \\\"%w\\\".\" LEGACY_SCHEMA_TABLE \" \"\n" +
+                "      \"WHERE name NOT LIKE 'sqliteX_%%' ESCAPE 'X'\"\n" +
+                "      \" AND sql NOT LIKE 'create virtual%%'\"\n" +
+                "      \" AND sqlite_rename_test(%Q, sql, type, name, %d, %Q, %d)=NULL \",\n" +
+                "      zDb,\n" +
+                "      zDb, bTemp, zWhen, bNoDQS\n" +
+                "  );\n" +
+                "\n" +
+                "  if( bTemp==0 ){\n" +
+                "    sqlite3NestedParse(pParse, \n" +
+                "        \"SELECT 1 \"\n" +
+                "        \"FROM temp.\" LEGACY_SCHEMA_TABLE \" \"\n" +
+                "        \"WHERE name NOT LIKE 'sqliteX_%%' ESCAPE 'X'\"\n" +
+                "        \" AND sql NOT LIKE 'create virtual%%'\"\n" +
+                "        \" AND sqlite_rename_test(%Q, sql, type, name, 1, %Q, %d)=NULL \",\n" +
+                "        zDb, zWhen, bNoDQS\n" +
+                "    );\n" +
+                "  }\n" +
+                "}";
         String code = "void main(){\n" +
                 "\tint a = sizeof(int);\n" +
                 "}";
-        CPP14Parser parser = getParser(code);
+        CPP14Parser parser = getParser(code1);
         ParseTree tree = parser.translationunit();
         return;
     }

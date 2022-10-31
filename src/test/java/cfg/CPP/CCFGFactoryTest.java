@@ -1,21 +1,21 @@
 package cfg.CPP;
 
-import mainTool.antlr.Cpp.CPP14Lexer;
-import mainTool.antlr.Cpp.CPP14Parser;
-import mainTool.ast.functionDef.FunctionDef;
-import mainTool.ast.statements.CompoundStatement;
-import mainTool.ast.statements.Statement;
-import mainTool.ast.statements.blockstarters.*;
-import mainTool.cfg.ASTToCFGConverter;
-import mainTool.cfg.CFG;
-import mainTool.cfg.CPP.CCFGFactory;
+import io.analyzer.mainTool.antlr.Cpp.CPP14Lexer;
+import io.analyzer.mainTool.antlr.Cpp.CPP14Parser;
+import io.analyzer.mainTool.ast.functionDef.FunctionDef;
+import io.analyzer.mainTool.ast.statements.CompoundStatement;
+import io.analyzer.mainTool.ast.statements.Statement;
+import io.analyzer.mainTool.ast.statements.blockstarters.*;
+import io.analyzer.mainTool.cfg.ASTToCFGConverter;
+import io.analyzer.mainTool.cfg.CFG;
+import io.analyzer.mainTool.cfg.CPP.CCFGFactory;
 import org.antlr.v4.runtime.ANTLRInputStream;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.tree.ParseTree;
 import org.antlr.v4.runtime.tree.ParseTreeWalker;
 import org.junit.Test;
-import mainTool.parsing.CPP.builder.FunctionContentBuilder;
-import mainTool.parsing.CPP.builder.FunctionDefBuilder;
+import io.analyzer.mainTool.parsing.CPP.builder.FunctionContentBuilder;
+import io.analyzer.mainTool.parsing.CPP.builder.FunctionDefBuilder;
 
 public class CCFGFactoryTest {
     @Test

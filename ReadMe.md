@@ -2,6 +2,22 @@
 一个基于[Joern](https://github.com/octopus-platform/joern)开发的工具，目前只包括基础的将代码解析为CFG，CDG和DDG的功能，目前CodeParser只定义了一些基础的接口，不包括Main函数，各个接口的用法可参考test中的代码。
 
 
+# 使用
+
+- `mvn clean package -DskipTests`，会在 `target` 目录下生成 `CppCodeAnalyzerJava-1.0-SNAPSHOT.jar` 和 `CppCodeAnalyzerJava-1.0-SNAPSHOT-jar-with-dependencies.jar`，后者为可执行jar包
+
+- 使用 `java -jar target/CppCodeAnalyzerJava-1.0-SNAPSHOT-jar-with-dependencies.jar [options]` 执行，`[options]` 包括
+
+    * `-f`，指定被测试文件路径
+
+    * `-d`，执行测试文件夹，该文件夹下所有c文件都会被测试（注意 `-f` 和 `-d` 至少需要指定1个，并且不要同时指定）
+
+    * `-c`，指定 `calleeInfos.json` 路径，必须指定
+
+    * `-o`，指定输出结果文件夹，默认会在测试文件夹下生成 `result.json` 文件
+
+# 模块介绍
+
 各个目录功能
 
 - graphutils: 定义图的基类（控制流图，数据流图，控制依赖图）

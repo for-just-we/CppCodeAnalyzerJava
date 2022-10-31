@@ -1,21 +1,21 @@
 package udg.useDefGraph;
 
 
-import mainTool.antlr.Cpp.CPP14Lexer;
-import mainTool.antlr.Cpp.CPP14Parser;
-import mainTool.ast.statements.CompoundStatement;
-import mainTool.ast.statements.ExpressionStatement;
-import mainTool.ast.statements.IdentifierDeclStatement;
-import mainTool.udg.useDefGraph.UseOrDef;
+import io.analyzer.mainTool.antlr.Cpp.CPP14Lexer;
+import io.analyzer.mainTool.antlr.Cpp.CPP14Parser;
+import io.analyzer.mainTool.ast.statements.CompoundStatement;
+import io.analyzer.mainTool.ast.statements.ExpressionStatement;
+import io.analyzer.mainTool.ast.statements.IdentifierDeclStatement;
+import io.analyzer.mainTool.udg.useDefGraph.UseOrDef;
 import org.antlr.v4.runtime.ANTLRInputStream;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.tree.ParseTree;
 import org.antlr.v4.runtime.tree.ParseTreeWalker;
 import org.junit.Test;
-import mainTool.parsing.CPP.builder.FunctionContentBuilder;
-import mainTool.udg.ASTNodeASTProvider;
-import mainTool.udg.useDefAnalysis.ASTDefUseAnalyzer;
-import mainTool.udg.useDefAnalysis.CalleeInfos;
+import io.analyzer.mainTool.parsing.CPP.builder.FunctionContentBuilder;
+import io.analyzer.mainTool.udg.ASTNodeASTProvider;
+import io.analyzer.mainTool.udg.useDefAnalysis.ASTDefUseAnalyzer;
+import io.analyzer.mainTool.udg.useDefAnalysis.CalleeInfos;
 
 import java.util.Collection;
 

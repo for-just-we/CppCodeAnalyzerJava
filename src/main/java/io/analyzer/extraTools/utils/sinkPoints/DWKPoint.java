@@ -1,0 +1,46 @@
+package io.analyzer.extraTools.utils.sinkPoints;
+
+import io.analyzer.mainTool.ast.ASTNode;
+import io.analyzer.mainTool.ast.expressions.ArrayIndexing;
+import io.analyzer.mainTool.ast.expressions.UnaryOperator;
+import io.analyzer.mainTool.ast.expressions.binaryExpressions.BinaryExpression;
+import io.analyzer.mainTool.ast.expressions.expressionHolders.Callee;
+import io.analyzer.mainTool.ast.expressions.postfixExpressions.IncDecOp;
+
+import java.util.Set;
+
+public class DWKPoint extends SySePoint{
+    public Set<String> binOps = Set.of("+", "-", "*", "/", "%", "<<", ">>");
+    public Set<String> assignOps = Set.of("+=", "-=", "*=", "/=", "%=", "<<=", ">>=");
+
+    public DWKPoint(Set<String> sensitive_apis) {
+        super(sensitive_apis);
+    }
+
+    public boolean judgeSink(ASTNode astNode){
+        // Library/API Function Call
+        if (astNode instanceof Callee) {
+            if (sensitive_apis.contains(astNode.getEscapedCodeStr()))
+                return true;
+        }
+        else if (astNode instanceof ArrayIndexing)
+            return true;
+        else if (astNode instanceof UnaryOperator) {
+            if (astNode.getOperatorCode().equals("*"))
+                return true;
+        }
+        else if (astNode instanceof BinaryExpression) {
+            if (binOps.contains(astNode.getOperatorCode()))
+                return true;
+            else if (assignOps.contains(astNode.getOperatorCode()))
+                return true;
+        }
+        else if (astNode instanceof IncDecOp)
+            return true;
+
+        boolean flag = false;
+        for (int i = 0; i < astNode.getChildCount(); ++i)
+            flag = flag | judgeSink(astNode.getChild(i));
+        return flag;
+    }
+}

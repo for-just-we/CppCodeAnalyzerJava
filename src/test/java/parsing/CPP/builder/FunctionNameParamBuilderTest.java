@@ -1,8 +1,8 @@
 package parsing.CPP.builder;
 
-import mainTool.antlr.Cpp.CPP14Lexer;
-import mainTool.antlr.Cpp.CPP14Parser;
-import mainTool.parsing.CPP.builder.FunctionNameParamBuilder;
+import io.analyzer.mainTool.antlr.Cpp.CPP14Lexer;
+import io.analyzer.mainTool.antlr.Cpp.CPP14Parser;
+import io.analyzer.mainTool.parsing.CPP.builder.FunctionNameParamBuilder;
 import org.antlr.v4.runtime.ANTLRInputStream;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.tree.ParseTreeWalker;
